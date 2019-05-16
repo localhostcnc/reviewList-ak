@@ -100,3 +100,5 @@ INSERT INTO review_authur (name, picture_url) VALUES ("Amber Boehm", "https://s3
 INSERT INTO review_authur (name, picture_url) VALUES ("Mrs. Beverly Dietrich", "https://s3.amazonaws.com/uifaces/faces/twitter/uxalex/128.jpg");
 INSERT INTO review_authur (name, picture_url) VALUES ("Zander Feeney", "https://s3.amazonaws.com/uifaces/faces/twitter/wearesavas/128.jpg");
 INSERT INTO review_authur (name, picture_url) VALUES ("Brady Thiel", "https://s3.amazonaws.com/uifaces/faces/twitter/katiemdaly/128.jpg");
+
+
