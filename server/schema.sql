@@ -4,8 +4,8 @@ USE reviews;
 
 CREATE TABLE review_authur (
     author_id INT AUTO_INCREMENT UNIQUE,
-    name VARCHAR(255) NOT NULL,
-    picture_url VARCHAR(255) NOT NULL
+    name VARCHAR'(255)' NOT NULL,
+    picture_url VARCHAR'(255)' NOT NULL
 );
 
 CREATE TABLE review_attributes (
@@ -23,7 +23,7 @@ CREATE TABLE reviews (
     reviews_id INT AUTO_INCREMENT UNIQUE,
     property_id INT AUTO_INCREMENT UNIQUE,
     date DATETIME,
-    content VARCHAR(255) NOT NULL,
-    FOREIGN_KEY (author_id) REFRENCES review_author(author_id)
+    content VARCHAR'(255)' NOT NULL,
+    FOREIGN_KEY '(author_id)' REFRENCES review_author(author_id)
 )
 
