@@ -1,13 +1,13 @@
 # Project Name
 
-> Project description
+> Airbnb 
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/localhostcnc/top-image-bar
+  -	https://github.com/localhostcnc/calendar-component-kt
+  - https://github.com/localhostcnc/listinginfo  
+  - https://github.com/localhostcnc/booking-info-service-jeff
 
 ## Table of Contents
 
