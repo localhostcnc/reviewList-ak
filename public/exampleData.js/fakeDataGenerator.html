@@ -1,0 +1,41 @@
+<h1>Author's Seed</h1>
+    <textarea id="authtxt" cols="150" rows="20">
+    USE ReviewAuthur;
+</textarea>
+
+<h1>Reviews's Seed</h1>
+    <textarea id="revtxt" cols="150" rows="20">
+    USE Reviews:
+</textarea>
+
+<style>
+textarea { 
+  background: #EEF; 
+  font-family: 'Courier New', Courier, monospace;
+}
+</style>
+
+<script src = "build/build/faker.js" type = "text/javascript"></script>
+<script>
+  var randomName = faker.name.findName(); // Caitlyn Kerluke
+  var randomEmail = faker.internet.email(); // Rusty@arne.info
+  var randomCard = faker.helpers.createCard(); // random contact card containing many properties
+
+  var authel = document.getElementById('authtxt');
+
+  var N = 10;
+  for (var i=0; i<N; i++) {
+    authel.value += `INSERT INTO reviewauthors (name, picture_url) VALUES ("${faker.name.findName()}", "${faker.image.avatar()}");\n`;
+  }
+
+
+  //el.value = randomName;
+
+/*
+
+INSERT INTO groceries (name, quantity) VALUES ("egg rolls", 4);
+INSERT INTO groceries (name, quantity) VALUES ("gummy bears", 500);
+INSERT INTO groceries (name, quantity) VALUES ("CHEETOS", 20);
+
+*/
+</script>
