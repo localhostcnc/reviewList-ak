@@ -7,7 +7,7 @@ const PORT = 3030;
 app.use(express.static('client/dist/'));
 app.use(bodyPraser.json());
 
-app.get('/reviews/summary/reviewcount', (req, res) => {
+app.get(/client/, (req, res) => {
     res.send('Welcome to the server hacker!');
 });
 
