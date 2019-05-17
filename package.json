@@ -1,17 +1,33 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
+  "name": "reviews",
+  "version": "1.0.0",
+  "description": "Airbnb FEC",
+  "author": "Atiyeh Keshavarz",
   "license": "",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
+    "react-dev": "webpack -d --watch",
+    "start": "nodemon server/index.js"
   },
   "dependencies": {
+    "babel-loader": "^8.0.6",
+    "body-parser": "^1.19.0",
+    "enzyme": "^3.9.0",
+    "express": "^4.16.4",
+    "jest": "^24.8.0",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.0",
+    "react": "^16.8.6",
+    "react-dev": "0.0.1",
+    "react-dom": "^16.8.6",
+    "webpack": "^4.31.0"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "webpack-cli": "^3.3.2"
   }
 }

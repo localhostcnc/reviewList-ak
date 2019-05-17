@@ -1,0 +1,59 @@
+<h1>Author's Seed</h1>
+    <textarea id="authtxt" cols="150" rows="20">
+    USE reviews;
+</textarea>
+
+<h1>Reviews's Seed</h1>
+    <textarea id="revtxt" cols="150" rows="20">
+</textarea>
+
+<h1>Rating's Seed</h1>
+    <textarea id="ratetxt" cols="150" rows="20">
+</textarea>
+
+
+<h1>All Together</h1>
+run me with: <code><b>mysql -u root < ../server/schema.sql && mysql -u root < seed.sql;</b></code>
+    <textarea id="alltxt" cols="150" rows="20">
+</textarea>
+
+<style>
+  textarea { 
+    background-color:rgb(241, 187, 244); 
+    font-family: 'Courier New', Courier, monospace;
+  }
+</style>
+
+<script src ="faker.js" type = "text/javascript"></script>
+
+<script>
+  var randomName = faker.name.findName(); // Caitlyn Kerluke
+  var randomEmail = faker.internet.email(); // Rusty@arne.info
+  var randomCard = faker.helpers.createCard(); // random contact card containing many properties
+
+  var authorElement = document.getElementById('authtxt');
+  var reviewElement = document.getElementById('revtxt');
+  var rateElement = document.getElementById('ratetxt');
+  var allElement = document.getElementById('alltxt');
+
+  var N = 100;
+  for (var i=0; i<N; i++) {
+    authorElement.value += `INSERT INTO review_author (name, picture_url) VALUES ("${faker.name.findName()}", "${faker.image.avatar()}");\n`;
+  }
+
+  for (i=0; i<N; i++) {
+    reviewElement.value += `INSERT INTO reviews (property_id, date, author_id, content) VALUES` + 
+                           `("1001", FROM_UNIXTIME(${+ Math.floor(faker.date.past() / 1000)}), "${1+faker.random.number()%N}", "${faker.lorem.text()}");\n`;
+  }
+
+  for (i=0; i<N; i++) {
+     rateElement.value += `INSERT INTO ratings (review_id, attribute_id, value) VALUES ` +
+                          `(${1+faker.random.number()%N}, ${1+faker.random.number()%6}, ${1+faker.random.number()%5});\n`;
+  }
+
+  allElement.value = authorElement.value + reviewElement.value + rateElement.value;
+
+
+  //el.value = randomName;
+
+</script>
