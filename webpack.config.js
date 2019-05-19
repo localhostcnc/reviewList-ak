@@ -1,5 +1,5 @@
 module.exports = {
-    entry: __dirname + '/client/src/index.jsx',
+    entry: __dirname + '/src/components/index.jsx',
     module: {
       rules: [
         { 
@@ -19,3 +19,7 @@ module.exports = {
       path: __dirname + '/client/dist'
     }
   };
+
+
+
+
