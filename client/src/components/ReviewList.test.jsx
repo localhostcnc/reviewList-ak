@@ -1,13 +1,15 @@
+/* eslint-disable no-undef */
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 
-import ReviewList from './ReviewList.jsx';
+
+import ReviewList from './ReviewList';
 
 describe('ReviewList', () => {
-    test('Rendering the simple component', () => {
-        const wrapper = shallow (
-            <ReviewList />
-        );
-        expect(wrapper).toMatchSnapshot();
-    });  
+  test('Rendering the simple component', () => {
+    const wrapper = shallow(
+      <ReviewList />,
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
 });
