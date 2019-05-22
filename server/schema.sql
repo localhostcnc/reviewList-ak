@@ -38,7 +38,7 @@ CREATE TABLE reviews (
     PRIMARY KEY (review_id)
 );
 
-/* ~~~~~~~~~~~~~~~~~~~~~ reviews ~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* ~~~~~~~~~~~~~~~~~~~~~ ratings ~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 CREATE TABLE ratings (
     rating_id INT AUTO_INCREMENT UNIQUE,
