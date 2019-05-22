@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import $ from 'jquery';
@@ -20,8 +21,6 @@ class ReviewList extends React.Component {
       url: 'http://localhost:3030/reviews',
       contentType: 'application/json',
       success: (result) => {
-        console.log('success');
-        console.log(result);
         this.setState({
           reviews: result,
         });
