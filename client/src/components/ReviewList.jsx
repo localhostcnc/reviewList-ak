@@ -1,8 +1,6 @@
-/* eslint-disable no-console */
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import $ from 'jquery';
-import ReviewListItem from './ReviewListItem';
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -18,11 +16,12 @@ class ReviewList extends React.Component {
 
   loadReviews() {
     $.ajax({
-      type: 'get',
+      type: 'GET',
       url: 'http://localhost:3030/reviews',
-      data: {n: 50},
       contentType: 'application/json',
       success: (result) => {
+        console.log('success');
+        console.log(result);
         this.setState({
           reviews: result,
         });
@@ -34,10 +33,19 @@ class ReviewList extends React.Component {
   render() {
     return (
       <div>
-          I am ReviewList Component!
+                I am ReviewList Component!
         <ul>
-          {this.state.reviews.map((review, i) => (
-            <ReviewListItem key={i} data={review} />
+          {this.state.reviews.map(review => (
+            <li>
+              <b>
+                {review.review_id}
+                {' '}
+                said:
+              </b>
+              {review.content}
+              <br />
+              <br />
+            </li>
           ))}
         </ul>
       </div>

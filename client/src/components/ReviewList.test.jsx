@@ -1,9 +1,12 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import { shallow } from 'enzyme';
+
+
 import ReviewList from './ReviewList';
 
 describe('ReviewList', () => {
-  test('Rendering the Review List component', () => {
+  test('Rendering the simple component', () => {
     const wrapper = shallow(
       <ReviewList />,
     );

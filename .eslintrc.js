@@ -2,8 +2,7 @@ module.exports = {
     "env": {
         "browser": true,
         "es6": true,
-        "node": true,
-        "jest": true
+        "node": true
     },
     "extends": "airbnb",
     "globals": {
@@ -23,6 +22,5 @@ module.exports = {
     ],
     "rules": {
         "react/jsx-uses-vars": 2,
-        "no-unused-vars": "off",
     }
 };
