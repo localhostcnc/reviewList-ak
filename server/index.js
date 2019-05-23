@@ -7,8 +7,16 @@ const db = require('./db/controller.js');
 
 const port = process.env.PORT || 3030;
 
+// enabling CORS
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 app.use(express.static('client/dist/'));
 app.use(bodyPraser.json());
+
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // let resultHandler = function (err, data) {
@@ -63,7 +71,7 @@ app.get('/reviews/summary/reviewcount', (req, res) => {
       res.send(err);
     } else {
       res.status(200);
-      res.send(data);
+      res.send(data[0]);
     }
   });
 });

@@ -32,7 +32,7 @@ class ReviewList extends React.Component {
   render() {
     return (
       <div>
-                I am ReviewList Component!
+          I am ReviewList Component!
         <ul>
           {this.state.reviews.map(review => (
             <li>
