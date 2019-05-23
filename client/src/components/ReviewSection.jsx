@@ -1,7 +1,7 @@
 import React from 'react';
 import TotalSummary from './TotalSummary';
 import AttributesOverview from './AttributesOverview';
-import ReviewListItem from './ReviewListItem';
+import ReviewList from './ReviewList';
 
 class ReviewSection extends React.Component {
   constructor() {
@@ -14,7 +14,7 @@ class ReviewSection extends React.Component {
       <div>
         <TotalSummary />
         <AttributesOverview />
-        <ReviewListItem />
+        <ReviewList />
       </div>
     );
   }

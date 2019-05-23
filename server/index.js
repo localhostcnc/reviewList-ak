@@ -40,7 +40,11 @@ app.get('/reviews', (req, res) => {
       res.send(err);
     } else {
       res.status(200);
-      res.send(data);
+      let result = data;
+      if (req.query.n) {
+        result = result.slice(0, req.query.n);
+      }
+      res.send(result);
     }
   });
 });

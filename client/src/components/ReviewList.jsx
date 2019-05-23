@@ -2,6 +2,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import $ from 'jquery';
+import ReviewListItem from './ReviewListItem';
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -17,8 +18,9 @@ class ReviewList extends React.Component {
 
   loadReviews() {
     $.ajax({
-      type: 'GET',
+      type: 'get',
       url: 'http://localhost:3030/reviews',
+      data: {n: 50},
       contentType: 'application/json',
       success: (result) => {
         this.setState({
@@ -34,17 +36,8 @@ class ReviewList extends React.Component {
       <div>
           I am ReviewList Component!
         <ul>
-          {this.state.reviews.map(review => (
-            <li>
-              <b>
-                {review.review_id}
-                {' '}
-                said:
-              </b>
-              {review.content}
-              <br />
-              <br />
-            </li>
+          {this.state.reviews.map((review, i) => (
+            <ReviewListItem key={i} data={review} />
           ))}
         </ul>
       </div>

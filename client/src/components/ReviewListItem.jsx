@@ -1,51 +1,34 @@
+/* eslint-disable no-useless-constructor */
+/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
-import $ from 'jquery';
 
 class ReviewListItem extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      reviewItem: [],
-    };
+  constructor(props) {
+    super(props);
   }
 
-  componentDidMount() {
-    this.loadReviewItem.call(this);
-  }
+  reviewDateFormatted() {
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
 
-  loadReviewItem() {
-    $.ajax({
-      method: 'GET',
-      url: 'http://localhost:3030/reviews',
-      contentType: 'application/json',
-      success: (result) => {
-        this.setState({
-          reviewItem: result,
-        //   can we say reviewItem: result.content, ??
-        });
-      },
-      error: (err) => {
-        console.log('error');
-      },
-    });
+    let d = new Date(this.props.data.date);
+    return monthNames[d.getMonth()] + ' ' + d.getFullYear();
   }
 
   render() {
     return (
-      <div>
-          Dang!!! I am reviewlist item!
-        <ul>
-          {this.state.reviewItem.map(
-            (reviewContent, i) => (
-              <li key={i}>
-                <img width="100" height="100" src={reviewContent.author_picture} />
-                <strong>{reviewContent.author_name}</strong>
-                <br />{reviewContent.date}
-                <br />{reviewContent.content}
-              </li>
-            ),
-          )}
-        </ul>
+      <div className="review-item-box">
+        <div>
+          <div className="table-cell">
+            <img className="author-picture" alt="" width="48" height="48" src={this.props.data.author_picture} />
+          </div>
+          <div className="table-cell">
+            <div className="author-name">{this.props.data.author_name}</div>
+            <div className="review-date">{this.reviewDateFormatted()}</div>
+          </div>
+        </div>
+        <div className="review-content">{this.props.data.content}</div>
       </div>
     );
   }
