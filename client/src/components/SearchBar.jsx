@@ -2,16 +2,30 @@ import React from 'react';
 
 
 class SearchBar extends React.Component {
+  // eslint-disable-next-line no-useless-constructor
   constructor(props) {
-    super();
-    this.state = null;
+    super(props);
   }
 
-  // filter by any word in any review item (content)
+  onSearchClick() {
+    const value = document.getElementById('search-entry');
+    this.props.callback(value);
+  }
+
 
   render() {
     return (
-      <div>I am search Bar</div>
+      <div>
+        <span>
+          <input
+            id="search-entry"
+            type="search"
+            className="search"
+            placeholder="Search reviews"
+            onClick={this.onSearchClick.bind(this)}
+          />
+        </span>
+      </div>
     );
   }
 }

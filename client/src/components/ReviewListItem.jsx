@@ -8,12 +8,12 @@ class ReviewListItem extends React.Component {
   }
 
   reviewDateFormatted() {
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December',
     ];
 
-    let d = new Date(this.props.data.date);
-    return monthNames[d.getMonth()] + ' ' + d.getFullYear();
+    const d = new Date(this.props.data.date);
+    return `${monthNames[d.getMonth()]} ${d.getFullYear()}`;
   }
 
   render() {

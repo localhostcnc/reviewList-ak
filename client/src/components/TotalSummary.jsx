@@ -31,7 +31,6 @@ class TotalSummary extends React.Component {
   render() {
     return (
       <div>
-        <span>I am Total Summary</span>
         <ul> {this.state.reviewcount} </ul>
       </div>
     );
