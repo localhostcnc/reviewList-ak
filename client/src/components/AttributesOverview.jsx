@@ -32,13 +32,10 @@ class AttributesOverview extends React.Component {
   render() {
     return (
       <div>
-        {' '}
-        This is AttributesOverview!
         <ul>
           {this.state.attributesrating.map(
             (attributeItem, i) => ([attributeItem.attribute_name, attributeItem.average_value]),
           )}
-
         </ul>
       </div>
     );

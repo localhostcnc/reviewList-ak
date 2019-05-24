@@ -11,7 +11,8 @@ class ReviewSection extends React.Component {
     super();
     this.state = {
       filterWord: '',
-      reviews: [],
+      allReviews: [],
+      reviewsToShow: [],
     };
   }
 
@@ -27,26 +28,45 @@ class ReviewSection extends React.Component {
       contentType: 'application/json',
       success: (result) => {
         this.setState({
-          reviews: result,
+          allReviews: result,
+          reviewsToShow: result,
         });
       },
       error: (err) => { console.log(err); },
     });
   }
 
-  handleSearch(keyword) {
+  updateKeyword(keyword) {
     this.setState({
-      searchFilter: keyword,
+      filterWord: keyword,
     });
+  }
+
+  updateFilteration(keyword) {
+    var result = [];
+    for(var i = 0 ; i < this.state.allReviews.length; i++) {
+      var eachReview = this.state.allReviews[i];
+      if (eachReview.content.includes(keyword)) {
+        result.push(eachReview);
+      }
+    }
+    this.setState({
+      reviewsToShow: result,
+    });
+  }
+
+  handleSearch(keyword) {
+    this.updateKeyword(keyword);
+    this.updateFilteration(keyword);
   }
 
   render() {
     return (
       <div>
         <TotalSummary />
-        {/* <SearchBar callback={this.handleSearch.bind(this)} /> */}
+        <SearchBar callback={(keyword) => { this.handleSearch(keyword) }} />
         <AttributesOverview />
-        <ReviewList data={this.state.reviews} />
+        <ReviewList data={this.state.reviewsToShow} filterWord={this.state.filterWord} />
       </div>
     );
   }

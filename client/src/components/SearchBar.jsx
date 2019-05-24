@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class SearchBar extends React.Component {
   // eslint-disable-next-line no-useless-constructor
   constructor(props) {
@@ -8,7 +7,7 @@ class SearchBar extends React.Component {
   }
 
   onSearchClick() {
-    const value = document.getElementById('search-entry');
+    const value = document.getElementById('search-entry').value;
     this.props.callback(value);
   }
 
@@ -19,11 +18,14 @@ class SearchBar extends React.Component {
         <span>
           <input
             id="search-entry"
-            type="search"
+            type="text"
             className="search"
             placeholder="Search reviews"
-            onClick={this.onSearchClick.bind(this)}
+            // onClick={this.onSearchClick}
           />
+          <button type="button" 
+                   onClick={() => {this.onSearchClick()}}
+                   >Go!</button>
         </span>
       </div>
     );
