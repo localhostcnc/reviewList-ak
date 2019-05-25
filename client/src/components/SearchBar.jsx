@@ -7,34 +7,29 @@ class SearchBar extends React.Component {
     super(props);
   }
 
-  onSearchClick() {
-    const value = document.getElementById('search-entry').value;
-    this.props.callback(value);
+  onSearchClick(e) {
+    if (e.which == 13) {
+      const value = document.getElementById('search-entry').value;
+      this.props.callback(value);
+    }
   }
-
-  // onBtnClick() {
-  //   return(
-  //     //filterLine = "",
-  //   )}
- 
 
   render() {
     return (
-      <div>
+      <div className="search">
         <span>
           <input
             id="search-entry"
             type="text"
-            className="search"
             placeholder="Search reviews"
-            onKeyPress={() => {this.onSearchClick()}}
+            onKeyUp={(e) => {this.onSearchClick(e)}}
           />
         </span>
-        <div>
+        {/* <div>
           <span>
             <button onClick={() => {this.onBtnClick()}}>Back to all reviews</button>
           </span>
-          </div>
+        </div> */}
       </div>
     );
   }

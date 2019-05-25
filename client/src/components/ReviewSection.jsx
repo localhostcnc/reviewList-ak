@@ -46,7 +46,8 @@ class ReviewSection extends React.Component {
     var result = [];
     for(var i = 0 ; i < this.state.allReviews.length; i++) {
       var eachReview = this.state.allReviews[i];
-      if (eachReview.content.includes(keyword)) {
+      //replace keyword with <em>keyword<em>
+      if (eachReview.content.toLowerCase().includes(keyword.toLowerCase())) {
         result.push(eachReview);
       }
     }
@@ -67,6 +68,7 @@ class ReviewSection extends React.Component {
         <TotalSummary />
         <SearchBar callback={(keyword) => { this.handleSearch(keyword) }} />
         <AttributesOverview />
+        {/* toLowerCase() ?? */}
         <ReviewList data={this.state.reviewsToShow} filterWord={this.state.filterWord} />
       </div>
     );

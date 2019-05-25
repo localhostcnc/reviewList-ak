@@ -28,7 +28,6 @@ class AttributesOverview extends React.Component {
     });
   }
 
-  
 
   render() {
     return (
