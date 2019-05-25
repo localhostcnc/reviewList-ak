@@ -62,14 +62,17 @@ class ReviewSection extends React.Component {
     this.updateFilteration(keyword);
   }
 
+  clearSearch() {
+    this.handleSearch('');
+  }
+
   render() {
     return (
       <div>
         <TotalSummary />
         <SearchBar callback={(keyword) => { this.handleSearch(keyword) }} />
         <AttributesOverview />
-        {/* toLowerCase() ?? */}
-        <ReviewList data={this.state.reviewsToShow} filterWord={this.state.filterWord} />
+        <ReviewList data={this.state.reviewsToShow} filterWord={this.state.filterWord} clearSearchFunction={() => {this.clearSearch()}} />
       </div>
     );
   }

@@ -25,11 +25,6 @@ class SearchBar extends React.Component {
             onKeyUp={(e) => {this.onSearchClick(e)}}
           />
         </span>
-        {/* <div>
-          <span>
-            <button onClick={() => {this.onBtnClick()}}>Back to all reviews</button>
-          </span>
-        </div> */}
       </div>
     );
   }

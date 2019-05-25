@@ -22,10 +22,10 @@ class ReviewListItem extends React.Component {
     if (word.length === 0) {
       newContent = this.props.data.content;
     } else {
+      //https://stackoverflow.com/questions/3954927/js-regex-how-to-replace-the-captured-groups-only
       //https://stackoverflow.com/questions/494035/how-do-you-use-a-variable-in-a-regular-expression
-      newContent = this.props.data.content.replace(new RegExp(word, 'gi'), `<b>${word}</b>`);
+      newContent = this.props.data.content.replace(new RegExp(`(${word})`, 'gi'), '<b>$1</b>');
     }
-
     // https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml
     return { __html: newContent };
   }
