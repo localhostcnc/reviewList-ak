@@ -55,6 +55,7 @@ class ReviewSection extends React.Component {
     });
   }
 
+
   handleSearch(keyword) {
     this.updateKeyword(keyword);
     this.updateFilteration(keyword);

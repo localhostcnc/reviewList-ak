@@ -10,19 +10,19 @@ class ReviewList extends React.Component {
 
   
   render() {
-     let filterLine = '';
-    // let keyword = this.props.filterWord;
-    // let filteredReviews = this.props.reviewsToShow;
+    let filterLine = '';
+    let selectedKeyword = this.props.filterWord;
+    let filteredReviews = this.props.filterWord;
 
-    // if (keyword !== '') { // we are in search mode
-    //   if (filteredReviews.length === 0) {
-    //     filterLine = (<div>None of our guests have mentioned `${keyword}`</div>);
-    //   } else if (filteredReviews.length === 1){
-    //     filterLine = (<div>1 guest has mentioned `${keyword}`</div>)
-    //   } else {
-    //     filterLine = (<div>`${this.props.allReviews.length}` guests has mentioned `${keyword}`</div>);
-    //   }
-    // }
+    if (selectedKeyword !== '') { // we are in search mode
+      if (filteredReviews.length === 0) {
+        filterLine = (<span className="filter-return-review">None of our guests have mentioned "{selectedKeyword}"</span>);
+      } else if (filteredReviews.length === 1){
+        filterLine = (<span className="filter-return-review">1 guest has mentioned "{selectedKeyword}"</span>)
+      } else {
+        filterLine = (<span className="filter-return-review">{this.props.data.length} guests has mentioned "{selectedKeyword}"</span>);
+      }
+    }
 
     return (
       <div>

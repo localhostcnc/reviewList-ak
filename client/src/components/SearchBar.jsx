@@ -1,4 +1,5 @@
 import React from 'react';
+import ReviewList from './ReviewList';
 
 class SearchBar extends React.Component {
   // eslint-disable-next-line no-useless-constructor
@@ -11,6 +12,11 @@ class SearchBar extends React.Component {
     this.props.callback(value);
   }
 
+  // onBtnClick() {
+  //   return(
+  //     //filterLine = "",
+  //   )}
+ 
 
   render() {
     return (
@@ -21,12 +27,14 @@ class SearchBar extends React.Component {
             type="text"
             className="search"
             placeholder="Search reviews"
-            // onClick={this.onSearchClick}
+            onKeyPress={() => {this.onSearchClick()}}
           />
-          <button type="button" 
-                   onClick={() => {this.onSearchClick()}}
-                   >Go!</button>
         </span>
+        <div>
+          <span>
+            <button onClick={() => {this.onBtnClick()}}>Back to all reviews</button>
+          </span>
+          </div>
       </div>
     );
   }
