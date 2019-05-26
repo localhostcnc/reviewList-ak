@@ -69,6 +69,18 @@ app.get('/reviews/summary/reviewcount', (req, res) => {
   });
 });
 
+app.get('/reviews/summary/averagerating', (req, res) => {
+  db.getAverageRating((err, data) => {
+    if (err) {
+      res.status(500);
+      res.send(err);
+    } else {
+      res.status(200);
+      res.send(data[0]);
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`server is listening on port ${port}...`);
 });
