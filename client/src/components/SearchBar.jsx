@@ -1,17 +1,30 @@
 import React from 'react';
-
+import ReviewList from './ReviewList';
 
 class SearchBar extends React.Component {
   constructor(props) {
-    super();
-    this.state = null;
+    super(props);
   }
 
-  // filter by any word in any review item (content)
+  onSearchClick(e) {
+    if (e.which == 13) {
+      const value = document.getElementById('search-entry').value;
+      this.props.callback(value);
+    }
+  }
 
   render() {
     return (
-      <div>I am search Bar</div>
+      <div className="search">
+        <span>
+          <input
+            id="search-entry"
+            type="text"
+            placeholder="Search reviews"
+            onKeyUp={(e) => {this.onSearchClick(e)}}
+          />
+        </span>
+      </div>
     );
   }
 }

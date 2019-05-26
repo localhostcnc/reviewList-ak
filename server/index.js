@@ -18,17 +18,6 @@ app.use(express.static('client/dist/'));
 app.use(bodyPraser.json());
 
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// let resultHandler = function (err, data) {
-//   if (err) {
-//     res.status(500);
-//     res.send(err);
-//   } else {
-//     res.status(200);
-//     res.send(data);
-//   }
-// };
-
 app.get('/client', (req, res) => {
   res.send('Welcome to the client hacker!');
 });
@@ -70,6 +59,18 @@ app.get('/attributesrating/:attribute?', (req, res) => {
 
 app.get('/reviews/summary/reviewcount', (req, res) => {
   db.getReviewsCount((err, data) => {
+    if (err) {
+      res.status(500);
+      res.send(err);
+    } else {
+      res.status(200);
+      res.send(data[0]);
+    }
+  });
+});
+
+app.get('/reviews/summary/averagerating', (req, res) => {
+  db.getAverageRating((err, data) => {
     if (err) {
       res.status(500);
       res.send(err);

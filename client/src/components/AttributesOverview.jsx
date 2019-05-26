@@ -31,15 +31,19 @@ class AttributesOverview extends React.Component {
 
   render() {
     return (
-      <div>
-        {' '}
-        This is AttributesOverview!
-        <ul>
+      <div className="attribute-container">
           {this.state.attributesrating.map(
-            (attributeItem, i) => ([attributeItem.attribute_name, attributeItem.average_value]),
+                (attributeItem, i) => (
+                  <div key={i} className="attribute-item">
+                    {attributeItem.attribute_name} 
+                    <div className="attribute-stars">
+                      <div className="stars-outer">
+                        <div className="stars-inner" style={{width: Math.round(attributeItem.average_value/5*100-2.5)+'%'}}></div>
+                      </div>
+                    </div>
+                  </div>
+                )
           )}
-
-        </ul>
       </div>
     );
   }

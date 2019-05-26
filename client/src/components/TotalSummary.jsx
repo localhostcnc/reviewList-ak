@@ -6,14 +6,15 @@ class TotalSummary extends React.Component {
     super();
     this.state = {
       reviewcount: 0,
+      averageRating: 0,
     };
   }
 
   componentDidMount() {
-    this.loadSummaryCount.call(this);
+    this.loadData.call(this);
   }
 
-  loadSummaryCount() {
+  loadData() {
     $.ajax({
       method: 'GET',
       url: 'http://localhost:3030/reviews/summary/reviewcount',
@@ -26,13 +27,28 @@ class TotalSummary extends React.Component {
         console.log('error');
       },
     });
+
+    $.ajax({
+      method: 'GET',
+      url: 'http://localhost:3030/reviews/summary/averagerating',
+      success: (result) => {
+        this.setState({
+          averageRating: result.average_rating,
+        });
+      },
+      error: (err) => {
+        console.log('error');
+      },
+    });
   }
 
   render() {
     return (
-      <div>
-        <span>I am Total Summary</span>
-        <ul> {this.state.reviewcount} </ul>
+      <div className="total-summary-box">
+        <div className="stars-outer">
+          <div className="stars-inner" style={ {width: Math.round(this.state.averageRating/5*100-2.5)+'%'}}></div>
+        </div>
+        <div className="summary-reviews">{this.state.reviewcount} Reviews </div>
       </div>
     );
   }
