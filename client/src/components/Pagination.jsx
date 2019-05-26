@@ -3,7 +3,7 @@ class Pagination extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      currentPageNumber: 1
+      currentPageNumber: 1,
     };
   }
 

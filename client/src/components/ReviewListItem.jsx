@@ -1,5 +1,3 @@
-import React from 'react';
-
 class ReviewListItem extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +16,15 @@ class ReviewListItem extends React.Component {
     return `${monthNames[d.getMonth()]} ${d.getFullYear()}`;
   }
 
-  highlight(text, keyword) {
+  showMore() {
+    this.setState({
+      showingMore: true
+    });
+  }
+
+  highlight(text) {
+    let keyword = this.props.filterWord;
+
     let newContent;
     if (keyword.length === 0) {
       newContent = text;
@@ -31,10 +37,12 @@ class ReviewListItem extends React.Component {
     return { __html: newContent };
   }
 
-  showMore() {
-    this.setState({
-      showingMore: true
-    });
+  createSpanFromSubstr(from, to) { // create a span, containing highlighted text from this substr of reviewText
+    const reviewText = this.props.data.content;
+
+    let text = reviewText.substr(from, to);
+    let highlightedText = this.highlight(text)
+    return (<span dangerouslySetInnerHTML={highlightedText}></span>);
   }
 
   render() {
@@ -42,28 +50,23 @@ class ReviewListItem extends React.Component {
     let secondSection = '';
     const charLimit = 150;
     const reviewText = this.props.data.content;
-    
+
     if (reviewText.length <= charLimit) {
-      firstSection = (<span>{reviewText.substr(0, charLimit)}</span>);
+      firstSection = this.createSpanFromSubstr(0, charLimit);
     } else {
-      // check to not break the a word within the text
+      // check to not break a word within the text
       let breakingPoint = charLimit;
       while (reviewText[breakingPoint] != ' ' && breakingPoint > 100) {
         breakingPoint--;
       }
 
-      firstSection = (
-        <span>
-          <span>{reviewText.substr(0, breakingPoint)} </span>
-          <span onClick={() => this.showMore()} className={this.state.showingMore ? 'read-more-button display-none' : 'read-more-button display-inline'}>...Read more</span>
-        </span>
-      );
-      secondSection = (
-        <span className={this.state.showingMore ? 'display-inline' : 'display-none'}>{reviewText.substr(breakingPoint)}
-        </span>
-      );
+      firstSection = (<span>
+          {this.createSpanFromSubstr(0, breakingPoint)}
+          {this.state.showingMore ? '' 
+            : (<span onClick={() => this.showMore()} className="read-more-button">...Read more</span>)}
+        </span>);
+      secondSection = this.state.showingMore ? this.createSpanFromSubstr(breakingPoint) : '';
     }
-
 
     return (
       <div className="review-item-box">
