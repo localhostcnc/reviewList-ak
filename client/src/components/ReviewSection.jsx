@@ -30,7 +30,7 @@ class ReviewSection extends React.Component {
       success: (result) => {
         this.setState({
           allReviews: result,
-          reviewsToShow: result,
+          reviewsToShow: result.slice(0, 7),
         });
       },
       error: (err) => { console.log(err); },
@@ -61,7 +61,6 @@ class ReviewSection extends React.Component {
     });
   }
 
-
   handleSearch(keyword) {
     this.updateKeyword(keyword);
     this.updateFilteration(keyword);
@@ -81,14 +80,18 @@ class ReviewSection extends React.Component {
   }
 
   render() {
+    let inSearchMode = (this.state.filterWord !== '');
+
     return (
       <div>
-        <TotalSummary />
-        <SearchBar callback={(keyword) => { this.handleSearch(keyword) }} />
+        <div className="total-row">
+          <TotalSummary />
+          <SearchBar callback={(keyword) => { this.handleSearch(keyword) }} />
+        </div>
         {/* hide AttributesOverview when keyword is not found */}
-        {this.state.reviewsToShow.length ? (<AttributesOverview />) : ''}
-        <Pagination callback={(from, to) => this.handleSlice(from, to)} allReviewsLength={this.state.allReviews.length} />
+        {inSearchMode ? '' : (<AttributesOverview />)}
         <ReviewList data={this.state.reviewsToShow} filterWord={this.state.filterWord} clearSearchFunction={() => {this.clearSearch()}} />
+        {inSearchMode ? '' : (<Pagination callback={(from, to) => this.handleSlice(from, to)} allReviewsLength={this.state.allReviews.length} />)}
       </div>
     );
   }

@@ -2,9 +2,16 @@
 class Pagination extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      currentPageNumber: 1
+    };
   }
 
   navigateToPage(newPageNumber) {
+    this.setState({
+      currentPageNumber: newPageNumber
+    })
+
     let n = newPageNumber; // we are reading from the given param, instead of this.state.currentPageNumber
     // because it might not be updated by setState, right now!
     this.props.callback((n-1)*7, n*7);
@@ -22,9 +29,12 @@ class Pagination extends React.Component {
     }
 
     return (
-      <div>
+      <div className="pagination-container">
         {arr.map((i) => 
-          (<span className="pagination-button" key={i} onClick={() => this.navigateToPage(i)}>{i}</span>)
+          (<span className={(i===this.state.currentPageNumber)?"selected":""} 
+                  key={i} 
+                  onClick={() => this.navigateToPage(i)}
+           >{i}</span>)
         )}
       </div>
     );
