@@ -18,17 +18,6 @@ app.use(express.static('client/dist/'));
 app.use(bodyPraser.json());
 
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// let resultHandler = function (err, data) {
-//   if (err) {
-//     res.status(500);
-//     res.send(err);
-//   } else {
-//     res.status(200);
-//     res.send(data);
-//   }
-// };
-
 app.get('/client', (req, res) => {
   res.send('Welcome to the client hacker!');
 });

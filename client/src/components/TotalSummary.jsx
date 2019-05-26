@@ -31,13 +31,10 @@ class TotalSummary extends React.Component {
   render() {
     return (
       <div className="total-summary-box">
-        <div className="attribute-container-summary">
-          <div className="attribute-stars-summary">
-            <div className="stars-outer-summary">
-              <div className="stars-inner-summary" id="count-style" style={ {width: Math.round(this.state.reviewcount/5*100-2.5)+'%'}}>{this.state.reviewcount} Reviews </div>
-            </div>
-          </div>
+        <div className="stars-outer">
+          <div className="stars-inner" style={ {width: Math.round(this.state.reviewcount/5*100-2.5)+'%'}}></div>
         </div>
+        <div className="summary-reviews">{this.state.reviewcount} Reviews </div>
       </div>
     );
   }

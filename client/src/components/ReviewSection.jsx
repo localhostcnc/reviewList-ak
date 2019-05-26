@@ -4,6 +4,7 @@ import TotalSummary from './TotalSummary';
 import AttributesOverview from './AttributesOverview';
 import ReviewList from './ReviewList';
 import SearchBar from './SearchBar';
+import Pagination from './Pagination';
 
 
 class ReviewSection extends React.Component {
@@ -66,6 +67,15 @@ class ReviewSection extends React.Component {
     this.updateFilteration(keyword);
   }
 
+  handleSlice(from, to) {
+    let reviews = this.state.allReviews;
+    reviews = reviews.slice(from, to);
+
+    this.setState({
+      reviewsToShow: reviews,
+    });
+  }
+
   clearSearch() {
     this.handleSearch('');
   }
@@ -77,6 +87,7 @@ class ReviewSection extends React.Component {
         <SearchBar callback={(keyword) => { this.handleSearch(keyword) }} />
         {/* hide AttributesOverview when keyword is not found */}
         {this.state.reviewsToShow.length ? (<AttributesOverview />) : ''}
+        <Pagination callback={(from, to) => this.handleSlice(from, to)} allReviewsLength={this.state.allReviews.length} />
         <ReviewList data={this.state.reviewsToShow} filterWord={this.state.filterWord} clearSearchFunction={() => {this.clearSearch()}} />
       </div>
     );
