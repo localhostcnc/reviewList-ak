@@ -43,12 +43,16 @@ class ReviewSection extends React.Component {
   }
 
   updateFilteration(keyword) {
-    var result = [];
-    for(var i = 0 ; i < this.state.allReviews.length; i++) {
-      var eachReview = this.state.allReviews[i];
-      //replace keyword with <em>keyword<em>
-      if (eachReview.content.toLowerCase().includes(keyword.toLowerCase())) {
-        result.push(eachReview);
+    let result;
+    if (keyword.length === 0) {
+      result = this.state.allReviews;
+    } else {
+      result = [];
+      for(var i = 0 ; i < this.state.allReviews.length; i++) {
+        var eachReview = this.state.allReviews[i];
+        if (eachReview.content.toLowerCase().includes(keyword.toLowerCase())) {
+          result.push(eachReview);
+        }
       }
     }
     this.setState({
@@ -71,7 +75,8 @@ class ReviewSection extends React.Component {
       <div>
         <TotalSummary />
         <SearchBar callback={(keyword) => { this.handleSearch(keyword) }} />
-        <AttributesOverview />
+        {/* hide AttributesOverview when keyword is not found */}
+        {this.state.reviewsToShow.length ? (<AttributesOverview />) : ''}
         <ReviewList data={this.state.reviewsToShow} filterWord={this.state.filterWord} clearSearchFunction={() => {this.clearSearch()}} />
       </div>
     );
