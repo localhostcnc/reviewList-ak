@@ -14,8 +14,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use(express.static('client/dist/'));
-//  app.use(express.static(path.resolve(__dirname , '../../client/dist')));
 app.use(express.static('client/dist/'));
 
 app.use(bodyParser.json());

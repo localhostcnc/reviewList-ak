@@ -20,7 +20,7 @@
 > npm install
 > npm run react-dev
 > npm start
-> mysql -u -roor < server/schema.sql
+> mysql -u root -p < schema.sql
 
 ## Requirements
 
