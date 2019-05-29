@@ -1,8 +1,8 @@
 /* eslint-disable func-names */
 const express = require('express');
-
+const path = require('path');
 const app = express();
-const bodyPraser = require('body-parser');
+const bodyParser = require('body-parser');
 const db = require('./db/controller.js');
 
 const port = process.env.PORT || 3030;
@@ -14,8 +14,11 @@ app.use((req, res, next) => {
   next();
 });
 
+// app.use(express.static('client/dist/'));
+//  app.use(express.static(path.resolve(__dirname , '../../client/dist')));
 app.use(express.static('client/dist/'));
-app.use(bodyPraser.json());
+
+app.use(bodyParser.json());
 
 
 app.get('/client', (req, res) => {
