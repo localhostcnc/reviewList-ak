@@ -20,7 +20,9 @@
 > npm install
 > npm run react-dev
 > npm start
-> mysql -u root -p < schema.sql
+> mysql -u root -p < /server/schema.sql
+> exit mysql
+> mysql -u root -p  < /tools/seed.sql
 
 ## Requirements
 
