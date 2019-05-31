@@ -1,0 +1,13 @@
+version: '2'
+services:
+  node:
+    build: .
+    ports:
+    - "3123:3080"
+    depends_on:
+    - db
+    environment:
+    - DB_HOST=db
+  db:
+    build: ./server/db
+
