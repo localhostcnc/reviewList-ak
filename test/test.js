@@ -3,7 +3,7 @@ const supertest = require('supertest');
 const should = require('should');
 const assert = require('assert');
 
-const server = supertest.agent('http://localhost:3030');
+const server = supertest.agent('/'); // was http://localhost:3030
 
 describe('Testing Attributes Rating', () => {
   it('should return an array of 6 elements, with values in range [1,5]', (done) => {

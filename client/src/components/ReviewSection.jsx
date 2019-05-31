@@ -24,7 +24,7 @@ class ReviewSection extends React.Component {
   loadReviews() {
     $.ajax({
       type: 'get',
-      url: 'http://localhost:3030/reviews',
+      url: '/reviews',
       // data: {n: 50},
       contentType: 'application/json',
       success: (result) => {

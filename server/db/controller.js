@@ -1,11 +1,24 @@
 /* eslint-disable object-shorthand */
 /* eslint-disable func-names */
 
-const connection = require('./index.js');
+var connection = null;
+
+const dbquery = function(query, cb) {
+  if (connection === null) {  
+    connection = require('./index.js');
+    connection.query(query, cb);
+  } else { // connection was established before
+    connection.query(query, cb);
+  }
+}
+
+//connection = require('./index.js'); 
+// ^^^ this causes Node to crash with mysql is not there
+
 
 const getReviewItems = function (cb) {
   // execute my query to the db
-  connection.query(`select 
+  dbquery(`select 
   reviews.review_id as review_id,
   reviews.date as date,
   review_author.name as author_name,
@@ -15,15 +28,15 @@ const getReviewItems = function (cb) {
 };
 
 const getReviewsCount = function (cb) {
-  connection.query('select count(*) as count from reviews;', cb);
+  dbquery('select count(*) as count from reviews;', cb);
 };
 
 const getAverageRating = function (cb) {
-  connection.query('select avg(value) as average_rating from ratings;', cb);
+  dbquery('select avg(value) as average_rating from ratings;', cb);
 };
 
 const getRatingAttributes = function (cb) {
-  connection.query(`select 
+  dbquery(`select 
   review_attributes.name as attribute_name, 
   t2.average_value 
   from

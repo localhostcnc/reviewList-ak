@@ -18,7 +18,6 @@ app.use(express.static('client/dist/'));
 
 app.use(bodyParser.json());
 
-
 app.get('/client', (req, res) => {
   res.send('Welcome to the client hacker!');
 });

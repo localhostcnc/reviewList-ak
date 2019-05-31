@@ -16,7 +16,7 @@ class AttributesOverview extends React.Component {
   loadAttributes() {
     $.ajax({
       method: 'GET',
-      url: 'http://localhost:3030/attributesrating',
+      url: '/attributesrating',
       success: (result) => {
         this.setState({
           attributesrating: result,

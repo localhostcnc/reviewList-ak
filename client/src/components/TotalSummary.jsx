@@ -17,7 +17,7 @@ class TotalSummary extends React.Component {
   loadData() {
     $.ajax({
       method: 'GET',
-      url: 'http://localhost:3030/reviews/summary/reviewcount',
+      url: '/reviews/summary/reviewcount',
       success: (result) => {
         this.setState({
           reviewcount: result.count,
@@ -30,7 +30,7 @@ class TotalSummary extends React.Component {
 
     $.ajax({
       method: 'GET',
-      url: 'http://localhost:3030/reviews/summary/averagerating',
+      url: '/reviews/summary/averagerating',
       success: (result) => {
         this.setState({
           averageRating: result.average_rating,
