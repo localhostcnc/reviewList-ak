@@ -1,0 +1,13 @@
+version: '2'
+services:
+  node:
+    image: etiwitty/reviews-server:latest
+    ports:
+    - "80:3080"
+    depends_on:
+    - db
+    environment:
+    - DB_HOST=db
+  db:
+    image: etiwitty/reviews-db:latest
+
